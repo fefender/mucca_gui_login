@@ -1,0 +1,132 @@
+section.section {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: #fff;
+}
+
+.login-win {
+  background-color: #fff;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.login-win-left {
+  width: 60%;
+  justify-content: center;
+  align-items: left;
+  /* background-color: #1c1e27; */
+}
+
+.content-text {
+  position: relative;
+  width: 100%;
+}
+
+.content-text h1 {
+  margin-left: 10%;
+}
+
+.content-text p {
+  margin-left: 10%;
+  margin-right: 10%;
+  font-weight: 300;
+  color: #c1c1c1;
+}
+
+.login-win-right {
+  width: 40%;
+  /* background-color: #00b577; */
+}
+
+.button-primary {
+  padding: 10px 20px 10px 20px;
+  margin-left: 10%;
+  margin-top: 5%;
+  background-color: #00b577;
+  border: 1px solid #00a069;
+  border-radius: 2px;
+  color: #dcffff;
+  font-weight: 400;
+}
+
+.button-primary:hover {
+  background-color: #00a069;
+}
+
+.button-primary-inverted {
+  padding: 10px 20px 10px 20px;
+  margin-top: 3%;
+  background-color: #eee;
+  border: 1px solid #00a069;
+  border-radius: 2px;
+  color: #00b577;
+  font-weight: 400;
+}
+
+.button-primary:hover {
+  background-color: #00a069;
+}
+
+.loginForm p input {
+  width: 100%;
+  height: 35px;
+  border: none;
+  color: #dcffff;
+  border-bottom: 1px solid #dcffff;
+  background-color: #00b577;
+  padding: 5px 0px 0px 0px;
+  box-sizing: border-box;
+}
+
+.loginForm p input:focus::placeholder {
+  color: #00b577;
+}
+
+.loginForm p input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #dcffff;
+  opacity: 1; /* Firefox */
+}
+
+.loginForm p input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #dcffff;
+}
+
+.loginForm p input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #dcffff;
+}
+
+*:focus {
+  outline: none;
+}
+.loginForm .pot {
+  height: 1px;
+  border-bottom: 1px solid transparent;
+  padding: 0;
+  margin: 0 0 0 -4000px;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.msg-error-auth {
+  font-weight: 300;
+  color: #ff0000;
+  font-size: 14px;
+}
+
+.bground-color-left {
+  background-color: #1c1e27;
+}
+.bground-color-right {
+  background-color: #00b577;
+}

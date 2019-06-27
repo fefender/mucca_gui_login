@@ -1,0 +1,12 @@
+.loading-section {
+  height: 100%;
+}
+.loading-display {
+  background-color: #fff;
+  height:100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
