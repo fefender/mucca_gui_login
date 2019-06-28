@@ -52,6 +52,7 @@ export default {
               this.auth.status = result.status;
               VueCookies.set("token", result.data.token);
               VueCookies.set("key", result.data.key);
+              VueCookies.set("username", this.login.username);
               this.getPermissionGroup();
               this.$router.push("/home");
               this.$route.params.pathMatch = true;
@@ -64,6 +65,9 @@ export default {
             }
             if (VueCookies.isKey("key")) {
               VueCookies.remove("key");
+            }
+            if (VueCookies.isKey("username")) {
+              VueCookies.remove("username");
             }
           }
         );
@@ -113,6 +117,9 @@ export default {
           }
           if (VueCookies.isKey("key")) {
             VueCookies.remove("key");
+          }
+          if (VueCookies.isKey("username")) {
+            VueCookies.remove("username");
           }
         }
       );

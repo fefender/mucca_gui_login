@@ -25,7 +25,7 @@
 
           <p>
             <input
-              id="usernale"
+              id="username"
               v-model="login.username"
               type="text"
               name="username"
