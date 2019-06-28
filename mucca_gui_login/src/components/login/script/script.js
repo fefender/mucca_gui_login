@@ -52,6 +52,7 @@ export default {
               this.auth.status = result.status;
               VueCookies.set("token", result.data.token);
               VueCookies.set("key", result.data.key);
+              this.getPermissionGroup();
               this.$router.push("/home");
               this.$route.params.pathMatch = true;
             }
@@ -118,6 +119,50 @@ export default {
     },
     requestNewUser() {
       alert(this.reg.newusername);
+    },
+    getPermissionGroup() {
+      let api =
+        process.env.VUE_APP_PROTOCOLL +
+        process.env.VUE_APP_APIBASEURL +
+        "/" +
+        process.env.VUE_APP_USERS_VERSION +
+        "/" +
+        process.env.VUE_APP_USERS_SERVICE_NAME +
+        "/" +
+        process.env.VUE_APP_USERS_READ +
+        "?username=" +
+        this.login.username +
+        "&fields=group";
+
+      axios({
+        method: "GET",
+        url: api,
+        headers: {
+          "Content-Type": "application/json",
+          token: VueCookies.get("token"),
+          key: VueCookies.get("key")
+        }
+      }).then(
+        result => {
+          if (result.status !== 200) {
+            if (VueCookies.isKey("group")) {
+              VueCookies.remove("group");
+            }
+          }
+          if (result.status === 200) {
+            let group = "";
+            for (let x in result.data.data) {
+              group = result.data.data[x].group;
+            }
+            VueCookies.set("group", group);
+          }
+        },
+        error => {
+          if (VueCookies.isKey("group")) {
+            VueCookies.remove("group");
+          }
+        }
+      );
     },
     handleResize() {
       this.window.width = window.innerWidth;

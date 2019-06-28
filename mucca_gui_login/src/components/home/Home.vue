@@ -1,8 +1,9 @@
 <template>
   <div class="home">
     <Loading v-if="action.authorization === false"/>
-    <div class="content">
-      <p v-if="action.authorization === true">HomePage</p>
+    <div class="content" v-if="action.authorization === true">
+      <h1>Welcome {{user.userGroup}}</h1>
+      <p>HomePage</p>
     </div>
   </div>
 </template>

@@ -8,6 +8,7 @@ export default {
     Loading
   },
   created() {
+    console.log("created home");
     if (VueCookies.isKey("token") && VueCookies.isKey("key")) {
       let api =
         process.env.VUE_APP_PROTOCOLL +
@@ -64,13 +65,20 @@ export default {
       this.$router.push("/");
       this.$route.params.pathMatch = true;
     }
+    this.user.userGroup = VueCookies.get("group");
   },
-  mounted() {},
+  mounted() {
+    console.log("mounted home");
+    this.user.userGroup = VueCookies.get("group");
+  },
   methods: {},
   data() {
     return {
       action: {
         authorization: false
+      },
+      user: {
+        userGroup: "group"
       }
     };
   }
