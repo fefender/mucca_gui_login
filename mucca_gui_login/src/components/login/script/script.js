@@ -148,6 +148,7 @@ export default {
           if (result.status === 201) {
             this.confirm.sent = true;
             console.log("EMAIL SENT");
+            VueCookies.set("pendentUser", this.reg.newusername);
             // this.$router.push("/confirmation");
             // this.$route.params.pathMatch = true;
           }

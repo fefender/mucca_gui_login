@@ -15,14 +15,62 @@ export default {
   destroyed() {},
   methods: {
     verifyUser() {
-      console.log("Verification");
+      if (this.user.password === this.user.passwordTwo) {
+        let api =
+          process.env.VUE_APP_PROTOCOLL +
+          process.env.VUE_APP_APIBASEURL +
+          "/" +
+          process.env.VUE_APP_SSO_VERSION +
+          "/" +
+          process.env.VUE_APP_SSO_SERVICE_NAME +
+          "/" +
+          process.env.VUE_APP_SSO_VERIFY;
+        axios({
+          method: "POST",
+          url: api,
+          headers: {
+            "Content-Type": "application/json"
+          },
+          data: {
+            token: this.user.regtok,
+            password: this.user.password
+          }
+        }).then(
+          result => {
+            if (result.status === 201) {
+              // if (VueCookies.isKey("pendentUser")) {
+              //   let username = VueCookies.get("pendentUser");
+              //   VueCookies.set("username", username);
+              //   this.logIn(username);
+              // }
+              this.verification.status = true;
+              this.$router.push("/home");
+              this.$route.params.pathMatch = true;
+            }
+          },
+          error => {
+            // this.confirm.sent = false;
+          }
+        );
+      }
+    },
+    goToLogin() {
+      this.$router.push("/home");
+      this.$route.params.pathMatch = true;
+    },
+    logIn(username) {
+      console.log(username);
     }
   },
   data() {
     return {
       user: {
         password: "",
+        passwordTwo: "",
         regtok: ""
+      },
+      verification: {
+        status: false
       }
     };
   }
