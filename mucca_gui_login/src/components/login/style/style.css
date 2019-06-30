@@ -130,3 +130,10 @@ section.section {
 .bground-color-right {
   background-color: #00b577;
 }
+.confirm-txt {
+  color: #fff !important;
+  text-decoration: #fff;
+  text-decoration-style: solid;
+  text-decoration-line: underline;
+  line-height: 1.5em;
+}

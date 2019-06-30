@@ -125,7 +125,42 @@ export default {
       );
     },
     requestNewUser() {
-      alert(this.reg.newusername);
+      let api =
+        process.env.VUE_APP_PROTOCOLL +
+        process.env.VUE_APP_APIBASEURL +
+        "/" +
+        process.env.VUE_APP_SSO_VERSION +
+        "/" +
+        process.env.VUE_APP_SSO_SERVICE_NAME +
+        "/" +
+        process.env.VUE_APP_SSO_CREATE;
+      axios({
+        method: "POST",
+        url: api,
+        headers: {
+          "Content-Type": "application/json"
+        },
+        data: {
+          username: this.reg.newusername
+        }
+      }).then(
+        result => {
+          if (result.status === 201) {
+            this.confirm.sent = true;
+            console.log("EMAIL SENT");
+            // this.$router.push("/confirmation");
+            // this.$route.params.pathMatch = true;
+          }
+        },
+        error => {
+          this.confirm.sent = false;
+        }
+      );
+    },
+    redirect() {
+      // this.$router.push("/home");
+      // this.$route.params.pathMatch = true;
+      this.action.type = "login";
     },
     getPermissionGroup() {
       let api =
@@ -195,6 +230,9 @@ export default {
       },
       reg: {
         newusername: ""
+      },
+      confirm: {
+        sent: false
       }
     };
   }

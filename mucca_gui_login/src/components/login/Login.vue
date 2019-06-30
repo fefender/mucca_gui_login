@@ -49,20 +49,31 @@
           </p>
         </div>
         <div class="loginForm" v-else-if="action.type === 'register'">
-          <h1>Register</h1>
-          <p>
-            <input
-              id="newusername"
-              v-model="reg.newusername"
-              type="text"
-              name="newusername"
-              placeholder="EMAIL"
-            >
-          </p>
-          <p>
-            <button class="button-primary-inverted" @click="requestNewUser">CREATE NEW USER</button>
-          </p>
+          <div v-if="confirm.sent === false">
+            <h1>Register</h1>
+            <p>
+              <input
+                id="newusername"
+                v-model="reg.newusername"
+                type="text"
+                name="newusername"
+                placeholder="EMAIL"
+              >
+            </p>
+            <p>
+              <button class="button-primary-inverted" @click="requestNewUser">CREATE NEW USER</button>
+            </p>
+          </div>
+
+          <div class="content-text" v-else-if="confirm.sent === true">
+            <h1>Email Sent!</h1>
+            <p class="confirm-txt">Check you email to confirm your registration.</p>
+            <p>
+              <button class="button-primary-inverted" @click="redirect">OK</button>
+            </p>
+          </div>
         </div>
+        <div v-else-if="confirm.sent === true"></div>
       </div>
     </div>
   </section>
